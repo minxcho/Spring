@@ -1,3 +1,3 @@
 git add .
-git commit -m "$(date) by mincho"
+git commit -m "$(date) By Mincho"
 git push origin master
