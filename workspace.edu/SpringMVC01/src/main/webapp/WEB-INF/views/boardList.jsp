@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +28,17 @@
 				<c:forEach items="${list}" var="vo" varStatus="i">
 				<tr>
 					<td>${i.count}</td>				
-					<td>${vo.title}</td>				
+					<td><a href="boardContent.do?idx=${vo.idx}">${vo.title}</a></td>				
 					<td>${vo.writer}</td>				
-					<td>${vo.indate}</td>				
+					<td>${fn:split( vo.indate, " ")[0]}</td>				
 					<td>${vo.count}</td>				
-				
 				</tr>	
 				</c:forEach>
-							
 			</table>
+			
+			<a href="boardForm.do" class="btn btn-primary btn-sm">글쓰기</a>
+			
+			
 		</div>
 	    <div class="panel-footer">스프링게시판 - 박병관</div>
 	  </div>
