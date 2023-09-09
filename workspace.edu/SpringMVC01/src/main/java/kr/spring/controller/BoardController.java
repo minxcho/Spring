@@ -36,15 +36,13 @@ public class BoardController {
 		model.addAttribute("list", list);
 		
 		return "boardList"; // /WEB-INF/views/boardList.jsp -> forward
-	}
-	
+	}	
 	
 	@RequestMapping("/boardForm.do")
 	public String boardForm() {
 		System.out.println("글쓰기 페이지 이동");
 		return "boardForm";
-	}
-	
+	}	
 	
 	@RequestMapping("/boardInsert.do")
 	public String boardInsert(Board board) {
@@ -73,6 +71,11 @@ public class BoardController {
 		
 		return "redirect:/boardList.do";
 	}
+
+
+	
+	
+	
 	
 	
 }
