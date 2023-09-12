@@ -47,9 +47,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardUpdate.do")
-	public @ResponseBody void boardUpdate(Board board) {
+	public @ResponseBody void boardUpdate(@RequestParam("idx") int idx) {
 		System.out.println("게시글 수정 기능수행");
-		mapper.boardUpdate(board);
+		mapper.boardUpdate(idx);
 	}
 
 }

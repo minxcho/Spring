@@ -202,7 +202,7 @@
 			 $.ajax({
 				 	url : "boardUpdate.do",
 				 	type : "get",
-				 	data : {"board" : board},
+				 	data : {"idx" : idx},
 				 	success : loadList,
 				 	error : function() { alert("error");}
 				 });
