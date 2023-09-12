@@ -35,7 +35,7 @@
 					<td colspan="2" align="center">
 						<button type="submit" class="btn btn-success btn-sm">등록</button>
 						<button type="reset" class="btn btn-warning btn-sm">취소</button> 
-						<a href="boardList.do" class="btn btn-info btn-sm">목록</button>
+						<a href="boardList.do" class="btn btn-info btn-sm">목록</a>
 					</td>
 				</tr>
 	    	</table>

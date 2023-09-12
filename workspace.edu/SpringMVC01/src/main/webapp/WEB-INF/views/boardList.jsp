@@ -28,7 +28,7 @@
 				<c:forEach items="${list}" var="vo" varStatus="i">
 				<tr>
 					<td>${i.count}</td>				
-					<td><a href="boardContent.do?idx=${vo.idx}">${vo.title}</a></td>				
+					<td><a href="boardContent.do/${vo.idx}">${vo.title}</a></td>				
 					<td>${vo.writer}</td>				
 					<td>${fn:split( vo.indate, " ")[0]}</td>				
 					<td>${vo.count}</td>				
@@ -40,7 +40,7 @@
 			
 			
 		</div>
-	    <div class="panel-footer">스프링게시판 - 박병관</div>
+	    <div class="panel-footer">스프링게시판 - 손민초</div>
 	  </div>
 	</div>
 </body>
