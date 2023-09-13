@@ -77,7 +77,7 @@
 			// 비동기방식으로 게시글 리스트 가져오기 기능
 			// ajax - 요청 url, 어떻게 데이터 받을지, 요청방식 등... -> 객체
 			$.ajax({
-				url : "boardList.do",
+				url : "board/all",
 				type : "get",
 				dataType : "json",
 				success : makeView, // <- 콜백함수 (ajax요청후 나중에 실행되는 함수)
@@ -105,7 +105,7 @@
 				listHtml += "<td>내용</td>";
 				listHtml += "<td colspan='4'>";
 				listHtml += "<textarea id='ta" + obj.idx + "' readonly rows='7' class='form-control'>";
-				listHtml += obj.content;
+				// listHtml += obj.content;
 				listHtml += "</textarea>";
 				
 				
@@ -132,7 +132,7 @@
 	       }
 		
 		 function goList() {
-			 $("#boardList").css("display", "block");
+			 $("#boardList").css("display", "table-row");
 	         $("#wform").css("display", "none");
 		 }
 		
@@ -143,7 +143,7 @@
 			 var fData = $("#frm").serialize();
 			 
 			 $.ajax({
-				 url : "boardInsert.do",
+				 url : "board/new",
 				 type : "post",
 				 data : fData,
 				 success : loadList,
@@ -156,15 +156,35 @@
 		 function goContent(idx) {
 			 
 			 if($("#c" + idx).css("display") == "none") {
+				 
+				 $.ajax({
+					 url : "board/" + idx,
+					 type : "get",
+					 dataType : "json"
+					 success : function(data) {
+						$("#ta" + idx).val(data.content);
+					}, error : function () { alert("error");}
+				 });
 				 $("#c" + idx).css("display", "table-row");
+				 
 			 } else {
+				 
 				 $("#c" + idx).css("display", "none");
+				 $.ajax({
+					 url : "boardCount.do",
+					 	type : "get",
+					 	data : {"idx" : idx},
+					 	success : loadList,
+					 	error : function() { alert("error");}
+				 });
+				 
+				 
 			 }
 		 }
 		 
 		 function goDelete(idx) {
 			 $.ajax({
-			 	url : "boardDelete.do",
+			 	url : "board/" + idx,
 			 	type : "get",
 			 	data : {"idx" : idx},
 			 	success : loadList,
@@ -201,8 +221,8 @@
 			 // 수정된 게시글 다시 불러와서 적용시키시용 (숙제..)
 			 $.ajax({
 				 	url : "boardUpdate.do",
-				 	type : "get",
-				 	data : {"idx" : idx},
+				 	type : "post",
+				 	data : {"idx" : idx, "title" : title, "content" : content, "writer" : writer },
 				 	success : loadList,
 				 	error : function() { alert("error");}
 				 });
