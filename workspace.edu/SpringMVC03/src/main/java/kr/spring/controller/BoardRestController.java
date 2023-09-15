@@ -59,7 +59,7 @@ public class BoardRestController {
    @DeleteMapping("/{idx}")
    public void boardDelete(@PathVariable("idx") int idx) {
       System.out.println("게시글 삭제 기능 수행");
-      mapper.boardDelete(idx);
+      mapper.boardDelete(idx); 
    }
    
    @PutMapping("/update")
