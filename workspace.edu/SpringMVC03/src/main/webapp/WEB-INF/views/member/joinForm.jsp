@@ -114,7 +114,7 @@
 	            data : {"memID" : memID},
 	            success : function(data){
 	               // 중복유무 확인 -->(data=1 사용가능, data=0 사용불가능)
-	               if(data==1){
+	               if(data == 1){
 	                  $("#checkMessage").text("사용할 수 있는 아이디 입니다.");
 	                  $("#checkType").attr("class", "modal-content panel-success");
 	               }else{
