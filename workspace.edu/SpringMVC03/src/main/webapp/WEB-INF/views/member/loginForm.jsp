@@ -36,7 +36,6 @@
 							<td><input type="password" name="memPassword" id="memPassword"
 								class="form-control" maxlength="20" placeholder="비밀번호를 입력하세요." required="required"></td>
 						</tr>
-						
 						<tr>
 							<td colspan="2"><span id="passMessage" style="color: red;"></span>
 								<input type="submit" class="btn btn-primary btn-sm pull-right"
@@ -88,7 +87,6 @@
              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
            </div>
          </div>
-         
        </div>
      </div>
      
