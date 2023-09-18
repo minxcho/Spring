@@ -7,6 +7,14 @@
 		SELECT * FROM MEMBER WHERE MEMID = #{memID}
 	</select>
 	
+	<insert id="join" parameterType="kr.spring.entity.Member">
+		INSERT INTO MEMBER (MEMID, MEMPASSWORD, MEMNAME, MEMAGE, MEMGENDER, MEMEMAIL, MEMPROFILE) VALUES (#{memID}, #{memPassword}, #{memName}, #{memAge}, #{memGender}, #{memEmail}, #{memProfile} )
+	</insert>
+	
+	<select id="login" parameterType="kr.spring.entity.Member" resultType="kr.spring.entity.Member">
+		SELECT * FROM MEMBER WHERE MEMID = #{memID} AND MEMPASSWORD = #{memPassword}
+	</select>
+	
 	
 	
 

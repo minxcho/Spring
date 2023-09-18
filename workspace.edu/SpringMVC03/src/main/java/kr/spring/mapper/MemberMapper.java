@@ -12,6 +12,10 @@ import kr.spring.entity.Member;
 public interface MemberMapper {
 
 	public Member registerCheck(String memID);
+
+	public int join(Member m);
+
+	public Member login(Member m);
 	
 	
 	

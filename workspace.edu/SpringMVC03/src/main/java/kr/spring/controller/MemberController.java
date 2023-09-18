@@ -1,10 +1,13 @@
 package kr.spring.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.entity.Member;
 import kr.spring.mapper.MemberMapper;
@@ -34,4 +37,119 @@ public class MemberController {
 		}
 		
 	}
+	
+	
+	@RequestMapping("/join.do")
+	public String join(Member m, RedirectAttributes rttr, HttpSession session) {
+		
+		System.out.println("회원가입 기능 요청");
+		
+		// 유효성 검사 (back에서해도되고 front에서 해도되는데, 둘다 해주는게 좋다)
+		if(m.getMemID() == null || m.getMemID().equals("") 
+				|| m.getMemPassword() == null || m.getMemPassword().equals("")
+				|| m.getMemName() == null || m.getMemName().equals("") 
+				|| m.getMemAge() == 0 || m.getMemEmail() == null || m.getMemEmail().equals("")) {
+			// 회원가입을 할 수 없다. 하나라도 누락되어 있기 때문
+			
+			// 실패시 joinForm.do로 msgType과 msg내용을 보내야함
+			// msgType : 실페메세지, msg : 모든내용을 입력하세요
+			// forward방식은 model을 써서 보내지만, redirect는 model 못씀
+			// RedirectAttributes - 리다이렉트 방식으로 이동할 때 보낼 데이터를 저장하는 객체
+			// 일회성으로 사용... 
+			
+			rttr.addFlashAttribute("msgType", "실패메세지");
+			rttr.addFlashAttribute("msg", "모든 내용을 입력하세요.");
+			
+			return "redirect:/joinForm.do";
+			
+		} else {
+			// 회원가입을 시도할 수 있는 부분
+			
+			m.setMemProfile("");
+			int cnt = mapper.join(m);
+			
+			if(cnt == 1) {
+				System.out.println("회원가입 성공!");
+				rttr.addFlashAttribute("msgType", "성공메세지");
+				rttr.addFlashAttribute("msg", "회원가입에 성공했습니다.");
+				// 회원가입 성공 시 로그인처리까지 시키기
+				
+				session.setAttribute("mvo", m);
+				
+				return "redirect:/";
+			} else {
+				System.out.println("회원가입 실패!");
+				rttr.addFlashAttribute("msgType", "실패메세지");
+				rttr.addFlashAttribute("msg", "회원가입에 실패했습니다.");
+				// 회원가입 후 index.jsp로 이동시키세요
+				return "redirect:/joinForm.do";
+				
+			}
+		}
+		
+	}
+	
+	@RequestMapping("/loginForm.do")
+	public String loginForm() {
+		return "member/loginForm";
+	}
+	
+	@RequestMapping("/login.do")
+	public String login(Member m, RedirectAttributes rttr, HttpSession session) {
+		
+		// 문제 .
+		// mapper에 login이라는 메서드 이름으로 로그인 기능을 수행하시오
+		// 단, 로그인성공시 -> index.jsp로 이동 후 로그인에 성공했습니다 modal창 띄우기
+		//    로그인실패시 -> login.jsp로 이동 후 로그인에 실패했습니다 modal창 띄우기
+		
+		Member mvo = mapper.login(m);
+		if(mvo != null) {
+			System.out.println("로그인 성공!");
+			rttr.addFlashAttribute("msgType", "성공메세지");
+			rttr.addFlashAttribute("msg", "로그인에 성공했습니다.");
+			
+			session.setAttribute("mvo", mvo);  // header에서 mvo로 세션에 저장된값 꺼내기로 했으니까 동일하게 mvo로
+			return "redirect:/";
+		} else {
+			System.out.println("로그인 실패!");
+			rttr.addFlashAttribute("msgType", "실패메세지");
+			rttr.addFlashAttribute("msg", "로그인에 실패했습니다.");
+			
+			
+			return "redirect:/loginForm.do";
+			
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		System.out.println("로그아웃 성공");
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
