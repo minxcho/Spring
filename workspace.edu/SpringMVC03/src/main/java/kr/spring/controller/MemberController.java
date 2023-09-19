@@ -103,6 +103,7 @@ public class MemberController {
 		//    로그인실패시 -> login.jsp로 이동 후 로그인에 실패했습니다 modal창 띄우기
 		
 		Member mvo = mapper.login(m);
+		
 		if(mvo != null) {
 			System.out.println("로그인 성공!");
 			rttr.addFlashAttribute("msgType", "성공메세지");
