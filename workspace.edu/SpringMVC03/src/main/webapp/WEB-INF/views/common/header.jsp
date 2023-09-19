@@ -29,32 +29,22 @@
 					<li class="active"><a href="${contextPath}/">메인</a></li>
 					<li><a href="boardMain.do">게시판</a></li>
 				</ul>
-				
+
 				<c:if test="${empty mvo}">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">접속하기<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="${contextPath}/loginForm.do">로그인</a></li>
-								<li><a href="${contextPath}/joinForm.do">회원가입</a></li>
-							</ul>
-						</li>
+						<li><a href="${contextPath}/loginForm.do"><span class="glyphicon glyphicon-log-in"> 로그인</span></a></li>
+						<li><a href="${contextPath}/joinForm.do"><span class="glyphicon glyphicon-user"> 회원가입</span></a></li>
 					</ul>
 				</c:if>
 				<c:if test="${not empty mvo}">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">접속하기<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">회원정보수정</a></li>
-								<li><a href="#">프로필사진등록</a></li>
-								<li><a href="${contextPath}/logout.do">로그아웃</a></li>
-							</ul>
-						</li>
+						<li><a href="${contextPath}/updateForm.do"><span class="glyphicon glyphicon-edit"> 회원정보수정</span></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-picture"> 프로필사진등록</span></a></li>
+						<li><a href="${contextPath}/logout.do"><span class="glyphicon glyphicon-log-out"> 로그아웃</span></a></li>
 					</ul>
 				</c:if>
-				
-				
+
+
 			</div>
 		</div>
 	</nav>
