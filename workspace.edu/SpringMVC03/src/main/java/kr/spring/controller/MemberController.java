@@ -256,10 +256,7 @@ public class MemberController {
 			}
 			
 		}
-		
-		
-		
-		
+		  
 		// 업로드한 파일의 이름을 가져오는 코드
 		String newProfile = multi.getFilesystemName("memProfile");
 
