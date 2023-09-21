@@ -10,6 +10,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
    // web.xml을 대체할 java class
    
    
+	
    @Override
    protected Class<?>[] getRootConfigClasses() {
       // DB 설정관련 RootConfig.java 파일을 가져온다
@@ -38,6 +39,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
       // TODO Auto-generated method stub
       return new String[] {"/"};
    }
+   
    
    
 }
