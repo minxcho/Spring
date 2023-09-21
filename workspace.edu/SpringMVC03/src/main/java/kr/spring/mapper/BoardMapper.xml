@@ -9,7 +9,7 @@
 
 
 	<insert id="boardInsert" parameterType="kr.spring.entity.Board">
-		INSERT INTO BOARD(TITLE, CONTENT, WRITER) VALUES(#{title}, #{content}, #{writer})
+		INSERT INTO BOARD(TITLE, MEMID, CONTENT, WRITER) VALUES(#{title}, #{memID}, #{content}, #{writer})
 	</insert>
 
 	<select id="boardContent" parameterType="int" resultType="kr.spring.entity.Board">
