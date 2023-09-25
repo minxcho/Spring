@@ -12,8 +12,12 @@
 		#{memID}, #{memPassword}, #{memName}, #{memAge}, #{memGender}, #{memEmail}, #{memProfile} )
 	</insert>
 	
-	<select id="login" parameterType="kr.spring.entity.Member" resultType="kr.spring.entity.Member">
-		SELECT * FROM MEMBER WHERE MEMID = #{memID} AND MEMPASSWORD = #{memPassword}
+	<select id="login" parameterType="kr.spring.entity.Member" resultMap="memberMap">
+		SELECT * 
+	  	 FROM MEMBER mem 
+	  	 LEFT OUTER JOIN AUTH auth 
+	  	   ON mem.MEMID = auth.MEMID 
+	  	WHERE mem.MEMID = #{memID}
 	</select>
 	
 	<update id="update" parameterType="kr.spring.entity.Member">

@@ -139,13 +139,18 @@ public class MemberController {
 		
 		Member mvo = mapper.login(m);
 		
-		if(mvo != null) {
+		// 추가 비밀번호 일치여부 체크
+		if(mvo != null && pwEncoder.matches(m.getMemPassword(), mvo.getMemPassword())) {
+		
 			System.out.println("로그인 성공!");
 			rttr.addFlashAttribute("msgType", "성공메세지");
 			rttr.addFlashAttribute("msg", "로그인에 성공했습니다.");
 			
 			session.setAttribute("mvo", mvo);  // header에서 mvo로 세션에 저장된값 꺼내기로 했으니까 동일하게 mvo로
 			return "redirect:/";
+		
+		
+			
 		} else {
 			System.out.println("로그인 실패!");
 			rttr.addFlashAttribute("msgType", "실패메세지");
