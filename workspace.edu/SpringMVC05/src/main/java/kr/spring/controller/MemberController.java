@@ -196,7 +196,9 @@ public class MemberController {
 		// 1.
 		if(m.getMemPassword() == null || m.getMemPassword().equals("")
 				|| m.getMemName() == null || m.getMemName().equals("") 
-				|| m.getMemAge() == 0 || m.getMemEmail() == null || m.getMemEmail().equals("")) {
+				|| m.getMemAge() == 0 || m.getMemEmail() == null || m.getMemEmail().equals("")
+				|| m.getAuthList().size() == 0
+				) {
 			
 			rttr.addFlashAttribute("msgType", "실패메세지");
 			rttr.addFlashAttribute("msg", "모든 내용을 입력하세요.");
@@ -207,6 +209,25 @@ public class MemberController {
 			// 이 쉬운걸 몰랐넹..... 다시 공부하기
 			Member mvo = (Member)session.getAttribute("mvo");
 			m.setMemProfile(mvo.getMemProfile());
+			
+			// 비밀번호 암호화
+			String encyPw = pwEncoder.encode(m.getMemPassword());
+			m.setMemPassword(encyPw);
+			
+			// 권한 삭제
+			mapper.authDelete(m.getMemID());
+			// 권한 입력 (수정)
+			List<Auth> list = m.getAuthList();
+			for(Auth auth : list) {
+				if(auth.getAuth() != null) {
+					// 권한 값이 있을때만 권한테이블에 값 넣기 
+					Auth saveVO = new Auth();
+					saveVO.setMemID(m.getMemID()); // 회원아이디 넣기
+					saveVO.setAuth(auth.getAuth()); // 권한 넣기
+					// 권한 저장
+					mapper.authInsert(saveVO);
+				}
+			}
 			
 			int cnt = mapper.update(m);
 

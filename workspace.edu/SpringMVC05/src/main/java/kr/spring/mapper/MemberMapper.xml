@@ -58,5 +58,11 @@
 		INSERT INTO AUTH (MEMID, AUTH) VALUES (#{memID}, #{auth})
 	</insert>
 	
+	<delete id="authDelete" parameterType="String">
+		DELETE FROM AUTH WHERE MEMID = #{memID}
+	</delete>
+	
+	
+	
 
 </mapper>
