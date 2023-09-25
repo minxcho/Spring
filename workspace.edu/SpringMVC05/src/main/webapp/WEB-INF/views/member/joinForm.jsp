@@ -99,9 +99,9 @@
 						</tr>
 						<tr>
 							<td colspan="3"><span id="passMessage" style="color: red;"></span>
-								<input type="submit" class="btn btn-primary btn-sm pull-right"
+								<input type="submit" class="btn btn-warning btn-sm pull-right"
 								value="등록"> <input type="reset"
-								class="btn btn-primary btn-sm pull-right" value="취소"></td>
+								class="btn btn-success btn-sm pull-right" value="취소"></td>
 						</tr>
 					</table>
 				</form>

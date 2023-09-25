@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-
+import kr.spring.entity.Auth;
 import kr.spring.entity.Board;
 import kr.spring.entity.Member;
 
@@ -22,6 +22,8 @@ public interface MemberMapper {
 	public void profileUpdate(Member mvo);
 
 	public Member getMember(String memID);
+
+	public void authInsert(Auth saveVO);
 	
 	
 	
