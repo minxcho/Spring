@@ -56,7 +56,6 @@
 								<img src="${contextPath}/resources/images/default.png" style="width: 50px; height: 50px;" class="img-circle">
 							</c:if>
 							
-							
 							<span style="color: gray;">${mvo.member.memName}님 welcome!</span>
 							
 							[
@@ -69,7 +68,6 @@
 								<security:authorize access="hasRole('ROLE_ADMIN')">
 									A
 								</security:authorize>
-							
 							
 								<!-- 권한 정보 띄우기 -->
 								<!-- 회원이 가진 권한의 리스트만큼 반복 돌면서 꺼내기 -->
@@ -94,7 +92,6 @@
 						<li><a href="${contextPath}/logout.do"><span class="glyphicon glyphicon-log-out"> 로그아웃</span></a></li>
 					</ul>
 				</security:authorize>
-
 
 			</div>
 		</div>
