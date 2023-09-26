@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +31,14 @@ public class MemberController {
 	
 	@Autowired // 내가 만들어 놓은 비밀번호 암호화 객체를 주입받아 사용하겠다
 	private PasswordEncoder pwEncoder;
+	
+	
+	@GetMapping("/access-denied")
+	public String showAccessDenied() {
+		return "access-denied";
+	}
+	
+	
 	
 	@RequestMapping("/joinForm.do")
 	public String joinForm() {
@@ -129,39 +138,39 @@ public class MemberController {
 		return "member/loginForm";
 	}
 	
-	@RequestMapping("/login.do")
-	public String login(Member m, RedirectAttributes rttr, HttpSession session) {
-		
-		// 문제 .
-		// mapper에 login이라는 메서드 이름으로 로그인 기능을 수행하시오
-		// 단, 로그인성공시 -> index.jsp로 이동 후 로그인에 성공했습니다 modal창 띄우기
-		//    로그인실패시 -> login.jsp로 이동 후 로그인에 실패했습니다 modal창 띄우기
-		
-		Member mvo = mapper.login(m);
-		
-		// 추가 비밀번호 일치여부 체크
-		if(mvo != null && pwEncoder.matches(m.getMemPassword(), mvo.getMemPassword())) {
-		
-			System.out.println("로그인 성공!");
-			rttr.addFlashAttribute("msgType", "성공메세지");
-			rttr.addFlashAttribute("msg", "로그인에 성공했습니다.");
-			
-			session.setAttribute("mvo", mvo);  // header에서 mvo로 세션에 저장된값 꺼내기로 했으니까 동일하게 mvo로
-			return "redirect:/";
-		
-		
-			
-		} else {
-			System.out.println("로그인 실패!");
-			rttr.addFlashAttribute("msgType", "실패메세지");
-			rttr.addFlashAttribute("msg", "로그인에 실패했습니다.");
-			
-			
-			return "redirect:/loginForm.do";
-			
-		}
-	
-	}
+//	@RequestMapping("/login.do")
+//	public String login(Member m, RedirectAttributes rttr, HttpSession session) {
+//		
+//		// 문제 .
+//		// mapper에 login이라는 메서드 이름으로 로그인 기능을 수행하시오
+//		// 단, 로그인성공시 -> index.jsp로 이동 후 로그인에 성공했습니다 modal창 띄우기
+//		//    로그인실패시 -> login.jsp로 이동 후 로그인에 실패했습니다 modal창 띄우기
+//		
+//		Member mvo = mapper.login(m);
+//		
+//		// 추가 비밀번호 일치여부 체크
+//		if(mvo != null && pwEncoder.matches(m.getMemPassword(), mvo.getMemPassword())) {
+//		
+//			System.out.println("로그인 성공!");
+//			rttr.addFlashAttribute("msgType", "성공메세지");
+//			rttr.addFlashAttribute("msg", "로그인에 성공했습니다.");
+//			
+//			session.setAttribute("mvo", mvo);  // header에서 mvo로 세션에 저장된값 꺼내기로 했으니까 동일하게 mvo로
+//			return "redirect:/";
+//		
+//		
+//			
+//		} else {
+//			System.out.println("로그인 실패!");
+//			rttr.addFlashAttribute("msgType", "실패메세지");
+//			rttr.addFlashAttribute("msg", "로그인에 실패했습니다.");
+//			
+//			
+//			return "redirect:/loginForm.do";
+//			
+//		}
+//	
+//	}
 	
 	
 	@RequestMapping("/logout.do")
