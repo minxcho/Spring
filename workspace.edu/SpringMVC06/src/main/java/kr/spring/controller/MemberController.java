@@ -380,7 +380,6 @@ public class MemberController {
 //		Member m = mapper.getMember(memID);
 //		session.setAttribute("mvo", m);
 		
-		
 		//회원정보수정에서 긁어옴.
 		
 		// 회원정보 수정 성공 시 Spring Security Context에 회원정보 다시 넣기
