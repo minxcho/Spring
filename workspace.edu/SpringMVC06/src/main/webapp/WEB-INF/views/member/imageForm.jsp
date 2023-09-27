@@ -5,6 +5,17 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+<!-- Spring Security에서 제공하는 태그 라이브러리 -->
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
+<!-- Spring Security 에서 제공하는 계정정보 (SecurityContext안에 계정정보 가져오기) -->
+
+<!-- 로그인한 계정정보 -->
+<c:set var="mvo" value="${SPRING_SECURITY_CONTEXT.authentication.principal}" />
+<!-- 권한 정보 -->
+<c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +34,13 @@
 			<div class="panel-body">
 
 				<form action="${contextPath}/imageUpdate.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-				
+					<input type="hidden" name="memID" value="${mvo.member.memID}">
 				
 					<table style="text-align: center; border: 1px solid #dddddd"
 						class="table table-bordered">
 						<tr>
 							<td style="width: 110px; vertical-align: middle;">아이디</td>
-							<td>${ mvo.memID }</td>
+							<td>${ mvo.member.memID }</td>
 						</tr>
 						<tr>
 							<td style="width: 110px; vertical-align: middle;">사진업로드</td>

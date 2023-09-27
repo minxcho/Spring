@@ -116,6 +116,9 @@
 			if(${msgType eq "실패메세지"}) {
 				$("#messageType").attr("class", "modal-content panel-warning");
 			}
+			if(${msgType eq "성공메세지"}) {
+				$("#messageType").attr("class", "modal-content panel-success");
+			}
 			$("#myMessage").modal("show");
 		}
 		
