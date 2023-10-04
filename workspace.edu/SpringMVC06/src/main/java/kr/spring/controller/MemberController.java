@@ -399,7 +399,6 @@ public class MemberController {
 		
 		
 		
-		
 		System.out.println("프로필 이미지변경 성공!");
 		rttr.addFlashAttribute("msgType", "성공메세지");
 		rttr.addFlashAttribute("msg", "프로필 이미지 변경에 성공했습니다.");
