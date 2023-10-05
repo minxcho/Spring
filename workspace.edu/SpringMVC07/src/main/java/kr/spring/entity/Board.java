@@ -1,4 +1,4 @@
-package kr.spirng.entity;
+package kr.spring.entity;
 
 import java.util.Date;
 
