@@ -40,8 +40,6 @@
 	    	</form>
 	    	
 	    </c:if>	
-	    
-	    
 	    <c:if test="${not empty mvo}">	
 	    
 	    	<form action="${cpath}/login/logoutProcess" class="form-inline" method="post">
