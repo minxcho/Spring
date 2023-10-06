@@ -45,6 +45,39 @@ public class BoardServiceImpl implements BoardService {
 		return vo;
 	}
 
+	@Override
+	public void modify(Board vo) {
+		mapper.update(vo); // mapper의 경우엔 DB용어를 쓰는 편
+	
+	}
+
+	@Override
+	public void remove(int idx) {
+		mapper.delete(idx);
+		
+	}
+
+	@Override
+	public void reply(Board vo) {
+		// 답글 만들기
+		// vo -> 부모글번호, 로그인ID, 제목, 답글, 작성자이름
+		// 부모글 정보 가져오기
+		Board parent = mapper.read(vo.getIdx());
+		// 부모글의 boardGroup값을 답글 vo에 저장하기
+		vo.setBoardGroup(parent.getBoardGroup());
+		// 시퀀스와 레벨은 부모글에 + 1
+		vo.setBoardSequence(parent.getBoardSequence()+1);
+		vo.setBoardLevel(parent.getBoardLevel()+1);
+		
+		// 현재 넣으려는 답글을 제외한 기존 같은 그룹에 댓글의
+		// 시퀀스값을 1씩 올려줘야한다
+		mapper.replySeqUpdate(parent);
+		
+		
+		// 답변 저장
+		mapper.replyInsert(vo);
+	}
+
 
 	
 	

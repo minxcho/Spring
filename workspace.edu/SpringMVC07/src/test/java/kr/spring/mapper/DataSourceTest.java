@@ -55,19 +55,30 @@ public class DataSourceTest {
 	
 	
 	
+	
 	@Test
-	public void testInsert() {
-		Board vo = new Board();
-		vo.setMemID("pbk");
-		vo.setTitle("오늘은 목요일");
-		vo.setContent("오늘 점심 머먹지");
-		vo.setWriter("병관쌤");
-		mapper.insertSelectKey(vo);
+	public void testController() throws Exception {
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.get("/board/list?idx=3")) // perform -> 요청하다
+				.andReturn() // return값을 받아오겠다
+				.getModelAndView() // controller의 model값과 view경로를 다 받아오겠다.
+				);
 	}
 	
 	
-	
-	
+	// inset 테스트
+//	@Test
+//	public void testInsert() {
+//		Board vo = new Board();
+//		vo.setMemID("pbk");
+//		vo.setTitle("오늘은 목요일");
+//		vo.setContent("오늘 점심 머먹지");
+//		vo.setWriter("병관쌤");
+//		mapper.insertSelectKey(vo);
+//	}
+
+
+	// controller 테스트
 //	@Test
 //	public void testController() throws Exception {
 //		log.info(
@@ -87,6 +98,7 @@ public class DataSourceTest {
 //			System.out.println(vo.toString());
 //		}
 //	}
+	 
 	
 	// mapper테스트
 //	@Test
