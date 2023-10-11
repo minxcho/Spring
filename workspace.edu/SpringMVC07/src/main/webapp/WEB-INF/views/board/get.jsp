@@ -47,17 +47,25 @@
 	    		<tr>
 	    			<td colspan="2" style="text-align: center;">
 	    				<c:if test="${not empty mvo}">
-	    					<button onclick="location.href='${cpath}/board/reply?idx=${vo.idx}'" class="btn btn-sm btn-primary">답글</button>
-	    					<button onclick="location.href='${cpath}/board/modify?idx=${vo.idx}'" class="btn btn-sm btn-success">수정</button>
+	    					<button data-btn="reply" class="btn btn-sm btn-primary">답글</button> <!-- data-btn 에서 btn부분은 어떤 단어를 써도 OK -->
+	    					<button data-btn="modify"  class="btn btn-sm btn-success">수정</button>
 	    				</c:if>
 	    				<c:if test="${empty mvo}">
 	    					<button disabled="disabled" class="btn btn-sm btn-primary">답글</button>
-	    					<button disabled="disabled" onclick="location.href='${cpath}/board/modify?idx=${vo.idx}'" class="btn btn-sm btn-success">수정</button>
+	    					<button disabled="disabled" class="btn btn-sm btn-success">수정</button>
 	    				</c:if>
-	    				<button onclick="location.href='${cpath}/board/list'" class="btn btn-sm btn-warning">목록</button>
+	    				<button data-btn="list"  class="btn btn-sm btn-warning">목록</button>
 	    			</td>
 	    		</tr>
 	    	</table>
+	    	
+	    	<form id="frm" method="get" action="">
+	    		<input id="idx" type="hidden" name="idx" value="${vo.idx}">
+	    	</form>
+	    	
+	    	
+	    	
+	    	
 	    </div>
 	    <div class="panel-footer">스프링게시판 - 손민초</div>
 	  </div>
@@ -68,6 +76,25 @@
 	
 	<script type="text/javascript">
 
+		// 링크처리
+		$(document).ready(function(){
+			$("button").on("click", function(e){
+				var formData = $("#frm");
+				var btn = $(this).data("btn");
+				
+				if(btn == "reply") {
+					formData.attr("action", "${cpath}/board/reply");
+				} else if (btn == "modify") {
+					formData.attr("action", "${cpath}/board/modify");
+				} else if (btn == "list") {
+					formData.attr("action", "${cpath}/board/list");
+					formData.find("#idx").remove();
+				}
+				
+				formData.submit();
+				
+			});
+		});
 	
 	</script>
 	
