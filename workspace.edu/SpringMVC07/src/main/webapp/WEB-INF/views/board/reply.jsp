@@ -29,7 +29,7 @@
            
              <div class="form-group">
                 <label>제목</label>
-                <input value="${vo.title}" type="text" name="title" class="form-control">
+                <input value='<c:out value='${vo.title}' />' type="text" name="title" class="form-control">
              </div>
              
              <div class="form-group">

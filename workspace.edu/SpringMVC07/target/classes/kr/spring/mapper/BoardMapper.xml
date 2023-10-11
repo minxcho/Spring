@@ -38,7 +38,7 @@
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM TBLBOARD 
+		UPDATE TBLBOARD
 		SET BOARDAVAILABLE = 0
 		WHERE IDX = #{idx}
 	</delete>

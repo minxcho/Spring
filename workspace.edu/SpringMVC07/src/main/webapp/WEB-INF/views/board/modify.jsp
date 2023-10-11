@@ -33,12 +33,12 @@
 		    		</tr>
 		    		<tr>
 		    			<td>제목</td>
-		    			<td><input class="form-control" type="text" name="title" value="${vo.title}"></td>
+		    			<td><input class="form-control" type="text" name="title" value="<c:out value='${vo.title}' />"></td>
 		    		</tr>
 		    		<tr>
 		    			<td>내용</td>
 		    			<td>
-		    				<textarea class="form-control" rows="10" cols="" name="content">${vo.content}</textarea>
+		    				<textarea class="form-control" rows="10" cols="" name="content"><c:out value="${vo.content}" /></textarea>
 		    			</td>
 		    		</tr>
 		    		<tr>
