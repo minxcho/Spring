@@ -34,6 +34,103 @@ SELECT IFNULL(MAX(IDX)+1, 1), 'jjy', '준용쌤입니다! 여러분 제발 늦�
 	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
 FROM TBLBOARD;
 
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.1', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.2', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.3', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.4', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.5', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.6', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.7', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.8', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.9', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.10', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.11', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.12', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.13', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.14', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.15', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.16', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.17', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.18', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.19', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+INSERT INTO TBLBOARD 
+SELECT IFNULL(MAX(IDX)+1, 1), 'aischool', '공지사항입니다.20', '다음주 월요일 정상등원하겠습니다.', '교육운영부', NOW(), 0,
+	 IFNULL(MAX(BOARDGROUP)+1, 1), 0, 0, 1
+FROM TBLBOARD;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 CREATE TABLE TBLMEMBER(
    MEMID VARCHAR(50) NOT NULL,

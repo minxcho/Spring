@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.entity.Board;
+import kr.spring.entity.Criteria;
+import kr.spring.entity.PageMaker;
 import kr.spring.service.BoardService;
 
 @Controller
@@ -60,8 +63,8 @@ public class BoardController {
 	}
 	
 	
-	@GetMapping("/get")
-	public String get(@RequestParam("idx") int idx, Model model) {
+	@GetMapping("/get")											 // model.addAttribute(cri)와 같은 역할
+	public String get(@RequestParam("idx") int idx, Model model, @ModelAttribute("cri") Criteria cri) {
 		Board vo = service.get(idx);
 		model.addAttribute("vo", vo);
 		return "board/get";
@@ -86,10 +89,17 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String boardList(Model model) {
+	public String boardList(Model model, Criteria cri) {
+		// 이제는 페이지 정보를 알고 있는 Criteria 객체를 Service에게 전달
+		List<Board> list = service.getList(cri);
+		// 페이징 처리에 필요한 PageMaker 객체도 생성
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri); // pageMaker가 페이징 기법을 하기위한 cri객체 전달
+		pageMaker.setTotalCount(service.totalCount()); // 페이징 기법을 하려면 전체 게시글 개수 알려줘야함
 		
-		List<Board> list = service.getList();
+		
 		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return "board/list";
 		

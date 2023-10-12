@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import kr.spring.entity.Board;
+import kr.spring.entity.Criteria;
 import kr.spring.service.BoardServiceImpl;
 import lombok.extern.log4j.Log4j;
 
@@ -56,14 +57,27 @@ public class DataSourceTest {
 	
 	
 	
+	
+	// service 클래스 안에 getList가 잘 되는지 테스트해보시오
 	@Test
-	public void testController() throws Exception {
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/board/list?idx=3")) // perform -> 요청하다
-				.andReturn() // return값을 받아오겠다
-				.getModelAndView() // controller의 model값과 view경로를 다 받아오겠다.
-				);
+	public void testGetList( ) {
+		Criteria cri = new Criteria();
+		List<Board> list = service.getList(cri);
+		for(Board vo : list) {
+			System.out.println(vo.toString());
+		}
 	}
+	
+	
+	
+//	@Test
+//	public void testController() throws Exception {
+//		log.info(
+//				mockMvc.perform(MockMvcRequestBuilders.get("/board/list?idx=3")) // perform -> 요청하다
+//				.andReturn() // return값을 받아오겠다
+//				.getModelAndView() // controller의 model값과 view경로를 다 받아오겠다.
+//				);
+//	}
 	
 	
 	// inset 테스트

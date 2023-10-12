@@ -46,8 +46,6 @@
 
       </c:if>   
          
-         
-         
       </div>
        <div class="panel-body">
           <table class="table table-bordered table-hover">
@@ -80,7 +78,7 @@
                       </c:if>
                       
                       <c:if test="${vo.boardAvailable > 0}">
-                         <a href="${cpath}/board/get?idx=${vo.idx}">
+                         <a class="move" href="${vo.idx}">
                          <c:if test="${vo.boardLevel > 0}">
                             <c:forEach begin="0" end="${vo.boardLevel}" step="1">
                                <span style="padding-left: 15px"></span>
@@ -88,9 +86,8 @@
                             ㄴ[RE]
                          </c:if>
                          <c:out value="${vo.title}" />
+                         </a>
                       </c:if>
-                      </a>
-                      
                       
                       </td>
                       <td>${vo.writer}</td>
@@ -110,6 +107,41 @@
              </tr>
              </c:if>
           </table>
+          
+          <div style="text-align: center;">
+           <ul class="pagination">
+           
+              <!-- 이전버튼처리 -->
+              <c:if test="${pageMaker.prev}">
+                 <li class="paginate_button previous">
+                    <a href="${pageMaker.startPage - 1}">◀</a>
+                 </li>
+              </c:if>
+              <!-- 페이지번호 처리 -->
+             <c:forEach var="pageNum" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                
+                <c:if test="${pageMaker.cri.page == pageNum }">
+                   <li class="paginate_button active"><a href="${pageNum}">${pageNum}</a></li>
+                </c:if>
+                
+                <c:if test="${pageMaker.cri.page != pageNum }">
+                   <li class="paginate_button"><a href="${pageNum}">${pageNum}</a></li>
+                </c:if>
+             </c:forEach>
+             <!-- 다음버튼처리 -->
+             <c:if test="${pageMaker.next}">
+                 <li class="paginate_button previous">
+                    <a href="${pageMaker.endPage + 1}">▶</a>
+                 </li>
+              </c:if>
+           </ul>
+           
+           <form action="${cpath}/board/list" id="pageFrm">
+              <input type="hidden" id="page" name="page" value="${pageMaker.cri.page}">           
+              <input type="hidden" id="perPageNum" name="perPageNum" value="${pageMaker.cri.perPageNum}">           
+           </form>
+           
+         </div>
        </div>
        <div class="panel-footer">스프링게시판 - 박병관</div>
      </div>
@@ -136,6 +168,31 @@
    
    <script type="text/javascript">
       $(document).ready(function(){
+         
+         // 페이지 번호 클릭 시 이동하기
+         var pageFrm = $("#pageFrm");
+         // li태그 안에 a태그 값 가져와서 form태그에 적용시켜 페이지이동
+         
+         $(".paginate_button a").on("click", function(e){
+            // e -> 현재 클릭한 a태그 요소 자체
+            e.preventDefault(); // a태그의 href속성 작동 막기
+            var page = $(this).attr("href"); // 클릭한 a태그의 href값 가져오기
+            pageFrm.find("#page").val(page);
+            pageFrm.submit();
+         });
+         
+         // 상세보기 클릭 시 이동
+         $(".move").on("click", function(e){
+        	 e.preventDefault(); // a태그의 href속성 작동 막기
+        	 var idx = $(this).attr("href");
+        	 var tag = "<input type='hidden' name='idx' value='"+ idx +"'>";
+        	 pageFrm.append(tag);
+        	 pageFrm.attr("action", "${cpath}/board/get");
+        	 pageFrm.submit();
+         });
+         
+         
+         
          
          var result = "${result}";
          checkModal(result);
@@ -164,20 +221,3 @@
    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
