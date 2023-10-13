@@ -29,34 +29,43 @@ public class BoardController {
 	// 다형성... 어쭈구...저ㄲ쭈구...
 
 	@PostMapping("/reply")
-	public String reply(Board vo) { // 부모글 번호, 작성 ID, 제목, 답글, 작성자 이름
+	public String reply(Board vo, Criteria cri, RedirectAttributes rttr) { // 부모글 번호, 작성 ID, 제목, 답글, 작성자 이름
 		service.reply(vo);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		return "redirect:/board/list";
 
 	}
 
 	@GetMapping("/reply")
-	public String reply(@RequestParam("idx") int idx, Model model) {
+	public String reply(@RequestParam("idx") int idx, Model model, @ModelAttribute("cri") Criteria cri) {
 		Board vo = service.get(idx);
 		model.addAttribute("vo", vo);
 		return "board/reply";
-	}
+	} // redirect가 아니라 포워드 방식이라 model이용가능..?
 
 	@GetMapping("/remove")
-	public String remove(@RequestParam("idx") int idx) {
+	public String remove(@RequestParam("idx") int idx, Criteria cri, RedirectAttributes rttr) {
 		service.remove(idx);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		return "redirect:/board/list";
 	}
+	// redirect로 이동할땐 model못씀..?
 
+	
+	
 	@PostMapping("/modify")
-	public String modify(Board vo) {
+	public String modify(Board vo, Criteria cri, RedirectAttributes rttr) {
 		service.modify(vo);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		return "redirect:/board/list";
 	}
 	
 	
 	@GetMapping("/modify")
-	public String modify(@RequestParam("idx") int idx, Model model) {
+	public String modify(@RequestParam("idx") int idx, Model model, @ModelAttribute("cri") Criteria cri) {
 		Board vo = service.get(idx);
 		model.addAttribute("vo", vo);
 		return "board/modify";

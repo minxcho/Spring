@@ -28,47 +28,54 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Board</div>
 			<div class="panel-body">
-				<form action="${cpath}/board/modify" method="post">
+				
+				<form id="frm">
+				
 					<table class="table table-bordered table-hover">
 						<tr>
 							<td>번호</td>
 							<td><input class="form-control" type="text" name="idx"
-								value="${vo.idx}" readonly="readonly"></td>
+								value="${vo.idx}" readonly="readonly" id="idx"></td>
 						</tr>
 						<tr>
 							<td>제목</td>
-							<td><input class="form-control" type="text" name="title"
+							<td><input class="form-control" type="text" name="title" id="title"
 								value="<c:out value='${vo.title}' />"></td>
 						</tr>
 						<tr>
 							<td>내용</td>
-							<td><textarea class="form-control" rows="10" cols="" name="content"><c:out value="${vo.content}" /></textarea></td>
+							<td><textarea class="form-control" rows="10" cols="" name="content" id="content"><c:out value="${vo.content}" /></textarea></td>
 						</tr>
 						<tr>
 							<td>작성자</td>
-							<td><input class="form-control" type="text" name="writer" value="${vo.writer}" readonly="readonly"></td>
+							<td><input class="form-control" type="text" name="writer" value="${vo.writer}" readonly="readonly" id="writer"></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center;">
 							<c:if test="${not empty mvo && mvo.memID eq vo.memID}">
-								<button type="submit" class="btn btn-sm btn-primary">수정</button>
-								<button type="button" data-btn="remove" class="btn btn-sm btn-success">삭제</button>
+								<button data-btn="modify" type="button" class="btn btn-sm btn-primary">수정</button>
+								<button data-btn="remove" type="button" class="btn btn-sm btn-success">삭제</button>
 							</c:if> 
 							<c:if test="${empty mvo or mvo.memID ne vo.memID}">
 								<button disabled="disabled" type="submit" class="btn btn-sm btn-primary">수정</button>
 								<button disabled="disabled" type="button" class="btn btn-sm btn-success">삭제</button>
 							</c:if>
-								<button type="button" data-btn="list" class="btn btn-sm btn-warning">목록</button></td>
+								<button data-btn="list" type="button" class="btn btn-sm btn-warning">목록</button></td>
 						</tr>
 					</table>
-				</form>
+
+
+
+
 			</div>
 			<div class="panel-footer">스프링게시판 - 손민초</div>
 		</div>
 	</div>
 
-	<form id="frm" method="get" action="">
-		<input id="idx" type="hidden" name="idx" value="${vo.idx}">
+
+
+		<input type="hidden" name="page" value="${cri.page}">
+	    <input type="hidden" name="perPageNum" value="${cri.perPageNum}">
 	</form>
 
 
@@ -82,10 +89,29 @@
 				
 				if(btn == "remove") {
 					formData.attr("action", "${cpath}/board/remove");
+					formData.attr("method", "get");
+					
+					formData.find("#title").remove();
+					formData.find("#content").remove();
+					formData.find("#writer").remove();
+					
 				} else if (btn == "list") {
 					formData.attr("action", "${cpath}/board/list");
 					formData.find("#idx").remove();
+					formData.attr("method", "get");
+					
+					formData.find("#title").remove();
+					formData.find("#content").remove();
+					formData.find("#writer").remove();
+					formData.find("#idx").remove();
+					
+				} else if (btn == "modify") {
+					formData.attr("action", "${cpath}/board/modify");
+					formData.attr("method", "post");
 				}
+				
+				
+				
 				formData.submit();
 			});
 		});
