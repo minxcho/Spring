@@ -25,7 +25,9 @@
 			
 			<input type="hidden" name="page" value="${cri.page}">
 			<input type="hidden" name="page" value="${cri.perPageNum}">
-			
+			<!-- type과 keyword를 넘기기위한 부분 추가 -->  
+        	<input type="hidden" name="type" value="${cri.type}"> 
+        	<input type="hidden" name="keyword" value="${cri.keyword}"> 
 			
             <input type="hidden" name="memID" value="${mvo.memID}" id="memID">
             <!-- 부모글의 게시글 번호 -->
