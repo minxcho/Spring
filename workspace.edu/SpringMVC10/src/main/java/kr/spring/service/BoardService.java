@@ -13,6 +13,9 @@ public interface BoardService {
 	
 	
 	public void register(Board vo); // 게시글 등록
+
+
+	public Board get(Long idx);
 	
 	
 	
