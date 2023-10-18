@@ -10,11 +10,10 @@ import kr.spring.entity.Board;
 import kr.spring.repository.BoardRepository;
 
 @Service
-public class BoardServiceImpl implements BoardService {
-	
+public class BoardServiceImpl implements BoardService{
+
 	@Autowired
-	private BoardRepository boardRepository; // mapper같은 녀석
-	
+	private BoardRepository boardRepository;
 	
 	@Override
 	public List<Board> getList() {
@@ -35,22 +34,26 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void delete(Long idx) {
-		boardRepository.deleteById(idx); // delete조심
-		
-		
+		boardRepository.deleteById(idx);
 	}
 
 	@Override
 	public void update(Board vo) {
-		boardRepository.save(vo); 
-		// JPA의 save 기능은 
-		// 새로운 pk값 또는 없는 값이 들어온다면 insert 기능을 하고,
-		// 기존에 존재하는 pk값이 들어온다면 update 기능을 한다.
+		// JPA -> sava메소드는
+		// 새로운 pk값 또는 없는 값이 들어온다면 insert 기능을
+		// 기존에 존재하는 pk값이 들어온다면 update 기능을
+		boardRepository.save(vo);
 	}
-	
-	
-	
-	
-	
-	
+
 }
+
+
+
+
+
+
+
+
+
+
+
