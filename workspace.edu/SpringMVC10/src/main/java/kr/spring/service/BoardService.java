@@ -16,6 +16,9 @@ public interface BoardService {
 
 
 	public Board get(Long idx);
+
+
+	public void delete(Long idx);
 	
 	
 	

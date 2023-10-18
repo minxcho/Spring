@@ -80,6 +80,10 @@
 					<div class="card" style="min-height: 500px; max-height: 1000px;">
 						<div class="card-body">
 							<form action="${cpath}/register" id="regForm" method="post">
+							
+								<input type="hidden" id="idx" name="idx" value="">
+							
+							
 								<div class="form-group">
 									<label for="title">제목</label>
 									<input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
@@ -96,11 +100,10 @@
 									<button type="button" data-oper="register" class="btn btn-sm btn-primary">등록</button>
 									<button type="button" data-oper="reset" class="btn btn-sm btn-warning">취소</button>
 								</div>
-								
 								<div id="updateDiv" style="display: none;">
-									<button type="button">목록</button>
-									<button type="button">수정</button>
-									<button type="button">삭제</button>
+									<button data-oper="list" type="button" class="btn btn-sm btn-primary">목록</button>
+									<button data-oper="updateForm" type="button" class="btn btn-sm btn-warning">수정</button>
+									<button data-oper="remove" type="button" class="btn btn-sm btn-success">삭제</button>
 								</div>
 								
 							</form>
@@ -127,6 +130,11 @@
 					regForm.submit();
 				} else if (oper == "reset") {
 					regForm[0].reset();
+				} else if (oper == "list") {
+					location.href = "${cpath}/list";
+				} else if (oper == "remove") {
+					var idx = regForm.find("#idx").val();
+					location.href = "${cpath}/remove?idx="+idx;
 				}
 			});
 			
@@ -151,6 +159,7 @@
 			
 		});
 		
+		// 게시글 상세보기 기능
 		function printBoard(vo) {
 			
 			var regForm = $("#regForm");
@@ -160,6 +169,11 @@
 			
 			regForm.find("input").attr("readonly", true);
 			regForm.find("textarea").attr("readonly", true);
+			
+			$("#regDiv").css("display", "none");
+			$("#updateDiv").css("display", "block");
+			
+			regForm.find("#idx").val(vo.idx);
 			
 		}
 	
