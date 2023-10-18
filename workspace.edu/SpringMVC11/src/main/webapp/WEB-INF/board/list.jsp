@@ -26,7 +26,7 @@
 		<div class="card-header">
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
-					<h1>SpringMVC10</h1>
+					<h1>SpringMVC11</h1>
 					<p>Java -> HTML -> CSS -> JavaScript -> JSP&Servlet -> Spring F/W -> Spring Boot</p>
 				</div>
 			</div>
