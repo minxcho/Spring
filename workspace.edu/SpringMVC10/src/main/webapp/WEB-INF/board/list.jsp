@@ -92,8 +92,17 @@
 									<label for="writer">작성자</label>
 									<input type="text" class="form-control" id="writer" name="writer" placeholder="Enter writer">
 								</div>
-								<button type="button" data-oper="register" class="btn btn-sm btn-primary">등록</button>
-								<button type="button" data-oper="reset" class="btn btn-sm btn-warning">취소</button>
+								<div id="regDiv">
+									<button type="button" data-oper="register" class="btn btn-sm btn-primary">등록</button>
+									<button type="button" data-oper="reset" class="btn btn-sm btn-warning">취소</button>
+								</div>
+								
+								<div id="updateDiv" style="display: none;">
+									<button type="button">목록</button>
+									<button type="button">수정</button>
+									<button type="button">삭제</button>
+								</div>
+								
 							</form>
 						</div>
 					</div>
