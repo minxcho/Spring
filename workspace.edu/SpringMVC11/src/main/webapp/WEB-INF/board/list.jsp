@@ -113,7 +113,7 @@
     		</div>
     	</div>
     </div> 
-    <div class="card-footer">스프링 - 박병관</div>
+    <div class="card-footer">스프링 - 손민초</div>
   </div>
   
   <script type="text/javascript">
@@ -185,10 +185,7 @@
   	
   
   </script>
-  
-  
-  
-  
+
 
 </body>
 </html>
