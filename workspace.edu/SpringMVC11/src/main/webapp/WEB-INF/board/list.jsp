@@ -8,9 +8,12 @@
 <!-- Spring Security 관련 라이브러리 -->
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-
-
 <c:set var="cpath" value="${pageContext.request.contextPath}" />    
+
+<!-- 로그인한 계정정보 -->
+<c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}" />
+<!-- 권한정보 -->
+<c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}" />
     
 <!DOCTYPE html>
 <html lang="en">
@@ -57,8 +60,13 @@
     						<button class="btn btn-success form-control">회원목록</button><br><br>
     						<button class="btn btn-warning form-control">개인정보수정</button>
     					</sec:authorize>
-    					
-    					
+    					<sec:authorize access="hasRole('MANAGER')">
+    						<button class="btn btn-success form-control">회원목록</button><br><br>
+    						<button class="btn btn-warning form-control">개인정보수정</button>
+    					</sec:authorize>
+    					<sec:authorize access="hasRole('MEMBER')">
+    						<button class="btn btn-warning form-control">개인정보수정</button>
+    					</sec:authorize>
     					
     				</div>
     			</div>
@@ -104,7 +112,7 @@
     						</div>
     						<div class="form-group">
     							<label for="writer">작성자</label>
-    							<input type="text" class="form-control" id="writer" name="writer" placeholder="Enter Writer">
+    							<input value='<sec:authentication property="principal.member.name" />' type="text" class="form-control" id="writer" name="writer" placeholder="Enter Writer" readonly="readonly">
     						</div>
     						<div id="regDiv">
 	    						<button type="button" data-oper="register" class="btn btn-sm btn-primary">등록</button>
@@ -186,6 +194,14 @@
   		
   		regForm.find("#idx").val(vo.idx);
   		
+  		if("${user.member.name}" == vo.writer) {
+  			$("button[data-oper='updateForm']").attr("disabled", false);
+  			$("button[data-oper='remove']").attr("disabled", false);
+  		} else {
+  			$("button[data-oper='updateForm']").attr("disabled", true);
+  			$("button[data-oper='remove']").attr("disabled", true);
+  		}
+
   	}
   	
   	function goUpdate(){
