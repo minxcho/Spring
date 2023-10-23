@@ -14,3 +14,8 @@ VALUES('이번주 금요일 시간 어때요','곱창먹을래요?','조준용')
 
 INSERT INTO BOARD(TITLE, CONTENT, WRITER)
 VALUES('나는요 Spring 좋은거얼~','아이쿠','아이유');
+
+SELECT * FROM MEMBER;
+
+DROP TABLE AUTH;
+DROP TABLE MEMBER;
