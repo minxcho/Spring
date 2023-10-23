@@ -15,6 +15,7 @@ import kr.spring.entity.Board;
 import kr.spring.service.BoardService;
 
 @Controller
+@RequestMapping("/board/*")
 public class BoardController {
 	
 	@Autowired
@@ -24,13 +25,13 @@ public class BoardController {
 	public String list(Model model) { // 게시글 전체조회 
 		List<Board> list = boardService.getList();
 		model.addAttribute("list", list);
-		return "list";
+		return "board/list";
 	}
 	
 	@PostMapping("/register")
 	public String register(Board vo) {
 		boardService.register(vo);
-		return "redirect:/list";
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/get")
@@ -42,13 +43,13 @@ public class BoardController {
 	@GetMapping("/remove")
 	public String remove(@RequestParam("idx") Long idx) {
 		boardService.delete(idx);
-		return "redirect:/list";
+		return "redirect:/board/list";
 	}
 	
 	@PostMapping("/modify")
 	public String modify(Board vo) {
 		boardService.update(vo);
-		return "redirect:/list";
+		return "redirect:/board/list";
 	}
 	
 	
