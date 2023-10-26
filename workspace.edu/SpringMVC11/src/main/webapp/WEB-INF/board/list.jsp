@@ -210,10 +210,6 @@
   		regForm.submit();
   	}
   	
-  	
-  
-  </script>
-
 
 </body>
 </html>
