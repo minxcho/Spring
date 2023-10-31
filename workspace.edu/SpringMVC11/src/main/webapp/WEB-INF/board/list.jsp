@@ -136,6 +136,9 @@
     <div class="card-footer">스프링 - 손민초</div>
   </div>
   
+  
+  
+  
   <script type="text/javascript">
   	$(document).ready(function(){
   		
@@ -209,6 +212,7 @@
   		regForm.attr("action", "${cpath}/board/modify");
   		regForm.submit();
   	}
+  	
   	
 
 </body>
