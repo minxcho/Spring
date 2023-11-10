@@ -14,7 +14,15 @@
 <div class="video-container">
     <video class="input-video" autoplay muted></video>
     <canvas class="output-canvas"></canvas>    
+    
+    
 </div>
+<div class="button-container">
+	    <button id="saveDataButton">Send Pose Data to Unity</button>
+	</div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
